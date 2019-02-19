@@ -54,4 +54,21 @@ public class Collisions
     else
       return new Point[0];
   }
+  
+  public static Point intersectionBetweenLineAndLine(Line line1, Line line2)
+  {
+    final float x1 = line1.p1.x, y1 = line1.p1.y;
+    final float x2 = line1.p2.x, y2 = line1.p2.y;
+    final float x3 = line2.p1.x, y3 = line2.p1.y;
+    final float x4 = line2.p2.x, y4 = line2.p2.y;
+    
+    final float x2y1_x1y2 = x2*y1 - x1*y2;
+    final float x4y3_x3y4 = x4*y3 - x3*y4;
+    final float den = (x2 - x1)*(y4 - y3) - (x4 - x3)*(y2 - y1);
+    
+    final float x = (x2y1_x1y2 * (x4 - x3) - x4y3_x3y4*(x2 - x1)) / den;    
+    final float y = (x2y1_x1y2 * (y4 - y3) - x4y3_x3y4*(y2 - y1)) / den;
+    
+    return new Point(x, y);
+  }
 }

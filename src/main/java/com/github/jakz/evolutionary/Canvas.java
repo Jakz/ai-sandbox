@@ -11,8 +11,10 @@ import com.github.jakz.evolutionary.geometry.Circle;
 import com.github.jakz.evolutionary.geometry.Collisions;
 import com.github.jakz.evolutionary.geometry.Line;
 import com.github.jakz.evolutionary.geometry.Point;
+import com.github.jakz.evolutionary.geometry.Rect;
 import com.github.jakz.evolutionary.gfx.CreatureRenderer;
 import com.github.jakz.evolutionary.gfx.Renderer;
+import com.github.jakz.evolutionary.gfx.ShapeRenderer;
 import com.github.jakz.evolutionary.gfx.ObstacleRenderer;
 
 import processing.core.PApplet;
@@ -75,8 +77,11 @@ public class Canvas extends PApplet implements ChangeListener
     }
   }
 
-  Circle circle = new Circle(400, 200, 100);
-  Line line = new Line(50, 70, 600, 220);
+  ShapeRenderer renderer = new ShapeRenderer();
+  Circle circle = new Circle(50, 50, 50);
+  Line line = Line.of(5, 5, 795, 795);
+  Line line2 = Line.of(15, 10, 115, 110);//Line.of(50,300, 600, 400);
+  Rect rect = new Rect(0, 350, 140, 100);
   
   public void draw()
   {
@@ -84,9 +89,10 @@ public class Canvas extends PApplet implements ChangeListener
     
     noFill();
     stroke(0);
-    ellipse(circle.center.x, circle.center.y, circle.radius*2, circle.radius*2);
+    renderer.render(this, circle);
+    renderer.render(this, rect);
 
-    circle.center.y += 1;
+    /*circle.center.y += 1;
     
     if (circle.center.y >= height - circle.radius)
       circle.center.y = circle.radius;
@@ -96,15 +102,19 @@ public class Canvas extends PApplet implements ChangeListener
     if (points.length > 0)
       stroke(255, 0, 0);
     else
-      stroke(0,0,0);
+      stroke(0,0,0);*/
     
-    line(line.p1.x, line.p1.y, line.p2.x, line.p2.y);
+    renderer.render(this, line);
+    renderer.render(this, line2);
     
-    for (Point p : points)
-    {
-      this.ellipse(p.x, p.y, 5, 5);
-    }
+    Point p = Collisions.intersectionBetweenLineAndLine(line, line2);
     
+    if (Float.isFinite(p.x))
+        this.ellipse(p.x, p.y, 5, 5);
+
+    
+    //for (Point p : points)
+     // this.ellipse(p.x, p.y, 5, 5);
   }
   
   
@@ -128,6 +138,9 @@ public class Canvas extends PApplet implements ChangeListener
   {     
     int x = mouseX;
     int y = mouseY;
+    
+    line.p1.x = x;
+    line.p1.y = y;
     
   }
   

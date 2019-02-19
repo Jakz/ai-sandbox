@@ -13,7 +13,7 @@ public class CreatureRenderer implements Renderer<Creature>
     Point pos = e.position();
     
     c.stroke(0,0,0);
-    c.fill(255,128,0);
+    c.fill(e.color());
     
     c.pushMatrix();
     c.translate(pos.x, pos.y);

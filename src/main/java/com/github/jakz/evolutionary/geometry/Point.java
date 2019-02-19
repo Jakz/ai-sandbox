@@ -9,4 +9,6 @@ public class Point
     this.x = x;
     this.y = y;
   }
+  
+  public String toString() { return String.format("(%2.2f, %2.2f)", x, y); }
 }

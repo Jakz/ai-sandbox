@@ -1,6 +1,6 @@
 package com.github.jakz.evolutionary.geometry;
 
-public class Circle 
+public class Circle implements Shape
 {
   public Point center;
   public float radius;
