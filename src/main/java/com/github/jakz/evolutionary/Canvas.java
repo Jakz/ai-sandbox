@@ -7,6 +7,9 @@ import javax.swing.event.ChangeListener;
 
 import com.github.jakz.evolutionary.entities.Creature;
 import com.github.jakz.evolutionary.entities.Obstacle;
+import com.github.jakz.evolutionary.gfx.CreatureRenderer;
+import com.github.jakz.evolutionary.gfx.EntityRenderer;
+import com.github.jakz.evolutionary.gfx.ObstacleRenderer;
 import com.pixbits.lib.lang.Point;
 import com.pixbits.lib.lang.Size;
 import com.pixbits.lib.ui.color.Color;
@@ -52,47 +55,23 @@ public class Canvas extends PApplet implements ChangeListener
   {
 
   }
-      
+  
+  EntityRenderer<Creature> creatureRenderer = new CreatureRenderer();
+  EntityRenderer<Obstacle> obstacleRenderer = new ObstacleRenderer();
+
   public void draw()
   {
     background(220);
     
     for (Creature c : world.creatures())
     {
-      Point pos = c.position();
-      
-      stroke(0,0,0);
-      fill(255,128,0);
-      
-      pushMatrix();
-      translate(pos.x, pos.y);
-      ellipse(0, 0, c.size(), c.size());
-      
-      /* draw heading */
-      float dx = (c.size()/2.0f * 1.3f) * sin(c.heading());
-      float dy = (c.size()/2.0f * 1.3f) * -cos(c.heading());      
-      translate(dx, dy);     
-      rotate(c.heading());
-      triangle(-5, 0, 5, 0, 0, -5);
-      
-      
-      popMatrix();
-      
+      creatureRenderer.render(this, c);
       c.heading(c.heading() + 0.01f);
     }
     
     for (Obstacle o : world.objects())
     {
-      stroke(0,0,0);
-      fill(100);
-      
-      Point pos = o.position();
-      Size size = o.size();
-      
-      pushMatrix();
-      translate(pos.x, pos.y);
-      rect(0, 0, size.w, size.h);
-      popMatrix();
+      obstacleRenderer.render(this, o);
     }
   }
   

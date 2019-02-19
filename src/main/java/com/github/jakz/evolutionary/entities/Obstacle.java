@@ -1,10 +1,9 @@
 package com.github.jakz.evolutionary.entities;
 
 import com.pixbits.lib.lang.Point;
-import com.pixbits.lib.lang.Rect;
 import com.pixbits.lib.lang.Size;
 
-public class Obstacle
+public class Obstacle implements Entity
 {
   private Point position;
   private Size size;
@@ -15,6 +14,6 @@ public class Obstacle
     size = new Size(w,h);
   }
   
-  public Point position() { return position; }
+  @Override public Point position() { return position; }
   public Size size() { return size; }
 }

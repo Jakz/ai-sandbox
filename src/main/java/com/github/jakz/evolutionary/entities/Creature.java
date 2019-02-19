@@ -2,7 +2,7 @@ package com.github.jakz.evolutionary.entities;
 
 import com.pixbits.lib.lang.Point;
 
-public class Creature
+public class Creature implements Entity
 {
   private final Point position;
   private float size;
@@ -15,7 +15,7 @@ public class Creature
     heading = 0;
   }
   
-  public Point position() { return position; }
+  @Override public Point position() { return position; }
   public float size() { return size; }
   public float heading() { return heading; }
   
