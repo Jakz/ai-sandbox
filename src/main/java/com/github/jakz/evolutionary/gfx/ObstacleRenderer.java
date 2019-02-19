@@ -9,7 +9,7 @@ public class ObstacleRenderer implements Renderer<Obstacle>
 {
   @Override
   public void render(Canvas c, Obstacle o)
-  {
+  {    
     c.stroke(0,0,0);
     c.fill(100);
     
@@ -18,6 +18,7 @@ public class ObstacleRenderer implements Renderer<Obstacle>
     
     c.pushMatrix();
     c.translate(pos.x, pos.y);
+    c.rectMode(Canvas.CENTER);
     c.rect(0, 0, size.w, size.h);
     c.popMatrix();
   }

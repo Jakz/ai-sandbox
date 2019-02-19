@@ -69,6 +69,9 @@ public class Collisions
     final float x = (x2y1_x1y2 * (x4 - x3) - x4y3_x3y4*(x2 - x1)) / den;    
     final float y = (x2y1_x1y2 * (y4 - y3) - x4y3_x3y4*(y2 - y1)) / den;
     
-    return new Point(x, y);
+    if (x >= line1.p1.x && x >= line2.p1.x && x <= line1.p2.x && x <= line2.p2.x)
+      return new Point(x, y);
+    else
+      return new Point(Float.NaN, Float.NaN);
   }
 }

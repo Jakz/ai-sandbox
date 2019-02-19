@@ -11,7 +11,18 @@ public class Rect implements Shape
     size = new Size(w, h);
   }
   
+  public void forEachVertex(FloatBiConsumer lambda)
+  {
+    lambda.accept(center.x - size.w/2, center.y - size.h/2);
+    lambda.accept(center.x + size.w/2, center.y - size.h/2);
+    lambda.accept(center.x + size.w/2, center.y + size.h/2);
+    lambda.accept(center.x + size.w/2, center.y - size.h/2);
+  }
   
+  public boolean isInside(float x, float y)
+  {
+    return x >= center.x - size.w/2 && x < center.x + size.w/2 && y >= center.y - size.h/2 && y < center.y + size.h/2;
+  }
   
-  
+  public String toString() { return String.format("rect(%2.2f, %2.2f, %2.2f, %2.2f)", center.x, center.y, size.w, size.h); }
 }

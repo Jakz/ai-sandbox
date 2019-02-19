@@ -16,7 +16,9 @@ public class App
     world = new World();
     world.spawn(new Creature(300.0f, 300.0f));
     
-    world.spawn(new Obstacle(100, 100, 5, 200));
+    world.spawn(new Obstacle(50, 30, 10, 740));
+    world.spawn(new Obstacle(600, 100, 80, 120));
+
     
     canvas = new Canvas(world);
     MainFrame frame = new MainFrame();

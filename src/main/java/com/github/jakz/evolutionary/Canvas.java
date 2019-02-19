@@ -80,12 +80,19 @@ public class Canvas extends PApplet implements ChangeListener
   ShapeRenderer renderer = new ShapeRenderer();
   Circle circle = new Circle(50, 50, 50);
   Line line = Line.of(5, 5, 795, 795);
-  Line line2 = Line.of(15, 10, 115, 110);//Line.of(50,300, 600, 400);
+  Line line2 = Line.of(450, 400, 790, 10);
   Rect rect = new Rect(0, 350, 140, 100);
+  
+  
   
   public void draw()
   {
     background(220);
+    
+    drawWorld(world);
+    
+    if (true)
+      return;
     
     noFill();
     stroke(0);
