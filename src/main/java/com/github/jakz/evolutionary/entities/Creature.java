@@ -1,6 +1,7 @@
 package com.github.jakz.evolutionary.entities;
 
-import com.pixbits.lib.lang.Point;
+import com.github.jakz.evolutionary.geometry.M;
+import com.github.jakz.evolutionary.geometry.Point;
 
 public class Creature implements Entity
 {
@@ -20,4 +21,7 @@ public class Creature implements Entity
   public float heading() { return heading; }
   
   public void heading(float v) { this.heading = v; }
+  
+  
+  @Override public boolean isInside(Point point) { return M.squaredDistance(position, point) < size*size; }
 }

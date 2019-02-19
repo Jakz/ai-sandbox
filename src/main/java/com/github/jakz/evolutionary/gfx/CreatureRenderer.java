@@ -2,9 +2,9 @@ package com.github.jakz.evolutionary.gfx;
 
 import com.github.jakz.evolutionary.Canvas;
 import com.github.jakz.evolutionary.entities.Creature;
-import com.pixbits.lib.lang.Point;
+import com.github.jakz.evolutionary.geometry.Point;
 
-public class CreatureRenderer implements EntityRenderer<Creature>
+public class CreatureRenderer implements Renderer<Creature>
 {
 
   @Override
@@ -25,9 +25,8 @@ public class CreatureRenderer implements EntityRenderer<Creature>
     c.translate(dx, dy);     
     c.rotate(e.heading());
     c.triangle(-5, 0, 5, 0, 0, -5);
-    
-    
+
     c.popMatrix();
-      }
+  }
 
 }

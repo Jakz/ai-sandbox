@@ -2,10 +2,10 @@ package com.github.jakz.evolutionary.gfx;
 
 import com.github.jakz.evolutionary.Canvas;
 import com.github.jakz.evolutionary.entities.Obstacle;
-import com.pixbits.lib.lang.Point;
-import com.pixbits.lib.lang.Size;
+import com.github.jakz.evolutionary.geometry.Point;
+import com.github.jakz.evolutionary.geometry.Size;
 
-public class ObstacleRenderer implements EntityRenderer<Obstacle>
+public class ObstacleRenderer implements Renderer<Obstacle>
 {
   @Override
   public void render(Canvas c, Obstacle o)
